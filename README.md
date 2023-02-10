@@ -1,7 +1,7 @@
 # This repo is about shell
 ## It moves from basic shell commands to abit advanced ones
 ## Tasks
-1. 0x00-shell_basics](https://github.com/fk2019/alx-system_engineering-devops/tree/master/0x00-shell_basics)
+1. [0x00-shell_basics](https://github.com/fk2019/alx-system_engineering-devops/tree/master/0x00-shell_basics)
 2. [0x01-shell_permissions](https://github.com/fk2019/alx-system_engineering-devops/tree/master/0x01-shell_permissions)
 3. [0x02-shell_redirections](https://github.com/fk2019/alx-system_engineering-devops/tree/master/0x02-shell_redirections)
 4. [0x03-shell_variables_expansions](https://github.com/fk2019/alx-system_engineering-devops/tree/master/0x03-shell_variables_expansions)
