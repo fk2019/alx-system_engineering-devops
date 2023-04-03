@@ -3,6 +3,6 @@
 apt-get upgrade
 apt-get -y install nginx
 chown -R ubuntu /var/www
-ufw allow 80
+ufw --force enable
 echo "Hello World!" > /var/www/html/index.html
 service nginx start
