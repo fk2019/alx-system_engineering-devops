@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # install and configure HAproxy
 apt-get -y install --no-install-recommends software-properties-common
-add-apt-repository ppa:vbernat/haproxy-2.6
+add-apt-repository -y ppa:vbernat/haproxy-2.6
 apt-get -y install haproxy=2.6.\*
 chown -R "$USER" /etc/haproxy/haproxy.cfg
 chown -R "$USER" /etc/default/haproxy
@@ -18,4 +18,6 @@ frontend http
 " >> /etc/haproxy/haproxy.cfg
 # Make sure that HAproxy can be managed via an init script
 echo "ENABLED=1" >> /etc/default/haproxy
+fuser -k 80/tcp
 service haproxy start
+haproxy -f /etc/haproxy/haproxy.cfg
