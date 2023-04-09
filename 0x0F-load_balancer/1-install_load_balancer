@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# install and configure HAproxy
+apt-get -y install --no-install-recommends software-properties-common
+add-apt-repository ppa:vbernat/haproxy-2.6
+apt-get -y install haproxy=2.6.\*
+chown -R "$USER" /etc/haproxy/haproxy.cfg
+chown -R "$USER" /etc/default/haproxy
+printf %s "
+backend webservers
+       balance roundrobin
+       server web1 web1.121016-web-01:80 check
+       server web2 web2.121016-web-02:80 check
+
+frontend http
+       bind *:80
+       mode http
+       default_backend webservers
+" >> /etc/haproxy/haproxy.cfg
+# Make sure that HAproxy can be managed via an init script
+echo "ENABLED=1" >> /etc/default/haproxy
