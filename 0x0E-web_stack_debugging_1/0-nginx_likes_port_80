@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# handle errors
+c="netstat -lptn | grep 0:80 | grep  nginx"
+c2="service nginx start"
+stop_port="sudo fuser -k 80/tcp"
+eval "$c" > /dev/null 2>&1
+if  [[ "$?" == 1 ]]; then
+    eval "$stop_port"
+    eval "$c2"
+fi
