@@ -8,8 +8,8 @@ chown -R "$USER" /etc/default/haproxy
 printf %s "
 backend webservers
        balance roundrobin
-       server web1 web1.121016-web-01:80 check
-       server web2 web2.121016-web-02:80 check
+       server 121016-web-01 54.173.86.57:80 check
+       server 121016-web-02 100.26.227.44:80 check
 
 frontend http
        bind *:80
@@ -18,3 +18,4 @@ frontend http
 " >> /etc/haproxy/haproxy.cfg
 # Make sure that HAproxy can be managed via an init script
 echo "ENABLED=1" >> /etc/default/haproxy
+service haproxy start
