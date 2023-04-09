@@ -6,7 +6,7 @@ package {'nginx':
 file_line {'redirections':
   path  => '/etc/nginx/sites-available/default',
   after => 'server_name _;',
-  line  => "#n\n\tadd_header $HOSTNAME;n"
+  line  => "#n\n\tadd_header \$HOSTNAME;n"
 }
 
 service {'nginx':
