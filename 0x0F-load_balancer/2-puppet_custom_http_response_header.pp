@@ -1,10 +1,14 @@
-# install nginx and create redirects
+# install nginx and add custom header
 package {'nginx':
         ensure => installed
 }
 
-exec {'add_header':
-  provider => shell,
-  command  => 'sudo sed -i "/server_name _;/a \#t\tadd_header X-Served-By \$HOSTNAME;" /etc/nginx/sites-available/default;
-  service nginx start'
+file_line {'redirections':
+  path  => '/etc/nginx/sites-available/default',
+  after => 'server_name _;',
+  line  => "#n\n\tadd_header ${HOSTNAME};n"
+}
+
+service {'nginx':
+  ensure => running
 }
