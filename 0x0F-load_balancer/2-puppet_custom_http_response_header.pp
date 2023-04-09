@@ -3,10 +3,10 @@ package {'nginx':
         ensure => installed
 }
 
-file_line {'redirections':
+file_line {'custom_header':
   path  => '/etc/nginx/sites-available/default',
   after => 'server_name _;',
-  line  => "#n\n\tadd_header \$HOSTNAME;"
+  line  => '#n\n\tadd_header $hostame;'
 }
 
 service {'nginx':
