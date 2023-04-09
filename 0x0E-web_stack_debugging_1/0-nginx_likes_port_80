@@ -1,12 +1,6 @@
 #!/usr/bin/env bash
 # handle errors
-c="netstat -lptn | grep 0:80 | grep  nginx"
-c2="service nginx start"
-ensure_80="sed -i 's/8080/80/g' /etc/nginx/sites-available/default"
-stop_port="sudo fuser -k 80/tcp"
-eval "$c" > /dev/null 2>&1
-if  [[ "$?" == 1 ]]; then
-    eval "$stop_port"
-    eval "$ensure_80"
-    eval "$c2"
-fi
+ln -s /etc/nginx/sites-available/default /etc/nginx/sites-available/default
+sed -i 's/8080/80/g' /etc/nginx/sites-available/default
+fuser -k 80/tcp
+service nginx start
