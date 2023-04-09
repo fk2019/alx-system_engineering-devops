@@ -7,6 +7,6 @@ stop_port="sudo fuser -k 80/tcp"
 eval "$c" > /dev/null 2>&1
 if  [[ "$?" == 1 ]]; then
     eval "$stop_port"
-    eval "$ensure_port"
+    eval "$ensure_80"
     eval "$c2"
 fi
