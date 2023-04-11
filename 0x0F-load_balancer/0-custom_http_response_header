@@ -6,10 +6,9 @@ redirect="#n\n\tlocation /redirect_me {\n\t\treturn 301 https://www.youtube.com/
 file="/etc/nginx/sites-available/default"
 error="#n\n\terror_page 404 /custom_404.html;\n\tlocation = /custom_404.html {\n\t\troot /usr/share/nginx/html;\n\t\tinternal;\n\t}\n"
 error_message="Ceci n'est pas une page"
-header="#n\n\tadd_header X-Served-By $HOSTNAME;"
+header="#n\n\tadd_header X-Served-By \$HOSTNAME;"
 apt-get -y update
 apt-get -y install nginx
-chown -R ubuntu /var/www
 chown -R "$USER":"$USER" /var/www/html/index.nginx-debian.html
 echo "Hello World!" > /var/www/html/index.nginx-debian.html
 sed -i "/server_name _;/a $header" "$file"
