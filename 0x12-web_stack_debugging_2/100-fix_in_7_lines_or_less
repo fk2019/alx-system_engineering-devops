@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# configure nginx server to nginx user
+sed -e 's/user.*/user nginx;/g' /etc/nginx/nginx.conf
+sed -i 's/80/8080/g' /etc/nginx/sites-available/default
+adduser --system  nginx
+service nginx restart
