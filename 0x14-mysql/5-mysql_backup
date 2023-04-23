@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # dump all databases and compress to a .tar.gz
-mysqldump -uroot --password="$1" --all-databases --master-data > backup.sql
+mysqldump -uroot --password="$1" --all-databases > backup.sql
 day=$(date +"%d")
 month=$(date +"%m")
 year=$(date +"%Y")
