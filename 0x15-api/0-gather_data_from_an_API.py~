@@ -1,0 +1,10 @@
+#!/usr/bin/python3
+"""Use API for a given user id and return information containing
+   the person's TODO list progress
+"""
+import requests
+import sys
+
+id = sys.argv[1]
+r = requests.get(f'https://jsonplaceholder.typicode.com/users?id={id}')
+print(r.text)
