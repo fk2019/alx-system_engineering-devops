@@ -11,7 +11,7 @@ if __name__ == "__main__":
     id = sys.argv[1]
     req = requests.get('https://jsonplaceholder.typicode.com/users?id={}'.
                        format(id))
-    name = req.json()[0].get('name')
+    name = req.json()[0].get('username')
     reqt = requests.get(
         'https://jsonplaceholder.typicode.com/todos?userId={}'.format(id))
     tasks = reqt.json()
