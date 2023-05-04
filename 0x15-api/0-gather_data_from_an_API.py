@@ -8,10 +8,11 @@ import sys
 
 if __name__ == "__main__":
     id = sys.argv[1]
-    req = requests.get(f'https://jsonplaceholder.typicode.com/users?id={id}')
+    req = requests.get('https://jsonplaceholder.typicode.com/users?id={}'.
+                       format(id))
     name = req.json()[0].get('name')
     reqt = requests.get(
-        f'https://jsonplaceholder.typicode.com/todos?userId={id}')
+        'https://jsonplaceholder.typicode.com/todos?userId={}'.format(id))
     total = len(reqt.json())
     count = 0
     tasks = []
@@ -19,7 +20,7 @@ if __name__ == "__main__":
         if i.get('completed') is True:
             count = count + 1
             tasks.append(i)
-    print(f'Employee {name} is done with tasks ({count}/{total}):')
+    print('Employee {} is done with tasks ({}/{}):'.format(name, count, total))
     for i in tasks:
         if i.get('title'):
-            print(f'\t {i.get("title")}')
+            print('\t {}'.format(i.get("title")))

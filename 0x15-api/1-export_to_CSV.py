@@ -9,10 +9,11 @@ import sys
 
 if __name__ == "__main__":
     id = sys.argv[1]
-    req = requests.get(f'https://jsonplaceholder.typicode.com/users?id={id}')
+    req = requests.get('https://jsonplaceholder.typicode.com/users?id={}'.
+                       format(id))
     name = req.json()[0].get('name')
     reqt = requests.get(
-        f'https://jsonplaceholder.typicode.com/todos?userId={id}')
+        'https://jsonplaceholder.typicode.com/todos?userId={}'.format(id))
     tasks = reqt.json()
     data = []
     for i in tasks:
