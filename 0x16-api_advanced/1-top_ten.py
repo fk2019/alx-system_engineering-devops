@@ -12,12 +12,17 @@ def top_ten(subreddit):
                'AppleWebKit/537.36 (KHTML, like Gecko)' +
                'Chrome/58.0.3029.110 Safari/537.3'}
     resp = requests.get('https://www.reddit.com/r/{}/hot/.json'.
-                        format(subreddit), allow_redirects=False)
-    json = resp.json()
-    if json.get('data'):
-        titles = [t['data']['title'] for t in json.get('data').get('children')]
-        top_ten = titles[:10]
-        for title in top_ten:
-            print(title)
+                        format(subreddit), allow_redirects=False,
+                        headers=headers)
+    if resp.status_code == '429':
+        pass
     else:
-        print("None")
+        json = resp.json()
+        if json.get('data'):
+            titles = [t['data']['title'] for t in json.get('data').get
+                      ('children')]
+            top_ten = titles[:10]
+            for title in top_ten:
+                print(title)
+        else:
+            print('None')
