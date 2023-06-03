@@ -1,0 +1,3 @@
+#!/usr/bin/bash
+# Reload gunicorn gracefully
+pkill -HUP gunicorn
