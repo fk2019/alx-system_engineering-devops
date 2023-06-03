@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
 # Reload gunicorn gracefully
-#masterpid=$(ps -C gunicorn fch -o pid | head -n 1)
-masterpid=$(ps aufx | grep gunicorn | head -n 1 | awk {'print $2'})
+masterpid=$(ps -C gunicorn fch -o pid | head -n 1)
 kill -HUP "$masterpid"
